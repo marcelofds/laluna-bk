@@ -1,0 +1,15 @@
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\bin\Debug\net10.0\LaLuna.Application.deps.json
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\bin\Debug\net10.0\LaLuna.Application.dll
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\bin\Debug\net10.0\LaLuna.Application.pdb
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\bin\Debug\net10.0\LaLuna.Domain.dll
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\bin\Debug\net10.0\LaLuna.Domain.pdb
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.csproj.AssemblyReference.cache
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.AssemblyInfoInputs.cache
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.AssemblyInfo.cs
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.csproj.CoreCompileInputs.cache
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.A.27CC5D39.Up2Date
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.dll
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\refint\LaLuna.Application.dll
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\LaLuna.Application.pdb
+c:\Users\marce\sources\repos\laluna-api\src\LaLuna.Application\obj\Debug\net10.0\ref\LaLuna.Application.dll

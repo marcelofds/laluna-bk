@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LaLuna.API/LaLuna.API.csproj" />
+    <Project Path="src/LaLuna.Application/LaLuna.Application.csproj" />
+    <Project Path="src/LaLuna.Domain/LaLuna.Domain.csproj" />
+    <Project Path="src/LaLuna.Infrastructure/LaLuna.Infrastructure.csproj" />
+  </Folder>
+</Solution>
