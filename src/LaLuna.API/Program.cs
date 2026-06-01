@@ -22,16 +22,24 @@ var authority = $"{keycloak["ServerUrl"]}/realms/{keycloak["Realm"]}";
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.Authority = authority;
-        options.Audience = keycloak["ClientId"];
-        options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
+        options.Authority = "http://localhost:8080/realms/laluna";
+        options.RequireHttpsMetadata = false;
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidateAudience = false, // Keycloak puts audience in token differently
-            ValidateLifetime = true,
-            RoleClaimType = "realm_access.roles",
-            NameClaimType = "preferred_username"
+            ValidateAudience = false,
+            ValidateLifetime = true
+        };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine("JWT ERROR:");
+                Console.WriteLine(context.Exception.Message);
+                return Task.CompletedTask;
+            }
         };
     });
 

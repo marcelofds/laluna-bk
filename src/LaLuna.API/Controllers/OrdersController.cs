@@ -65,7 +65,9 @@ public class OrdersController(IMediator mediator) : ControllerBase
     }
 
     private string GetKeycloakId() =>
-        User.FindFirstValue("sub") ?? throw new UnauthorizedAccessException();
+        User.FindFirstValue("sub")
+        ?? User.FindFirstValue(ClaimTypes.NameIdentifier)
+        ?? throw new UnauthorizedAccessException();
 }
 
 public record CreateOrderRequest(
