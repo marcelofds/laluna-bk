@@ -24,7 +24,8 @@ public record CategoryDto(
     string Name,
     string Slug,
     string? ImageUrl,
-    int? ParentId
+    int? ParentId,
+    List<CategoryDto>? Children = null
 );
 
 public record ProductPageDto(

@@ -4,6 +4,8 @@ using LaLuna.API.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Security.Claims;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +31,35 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidateAudience = false,
-            ValidateLifetime = true
+            ValidateLifetime = true,
+            RoleClaimType = ClaimTypes.Role,
+            NameClaimType = "preferred_username"
         };
 
         options.Events = new JwtBearerEvents
         {
+            OnTokenValidated = context =>
+            {
+                if (context.Principal?.Identity is not ClaimsIdentity identity)
+                    return Task.CompletedTask;
+
+                var realmAccess = context.Principal.FindFirst("realm_access")?.Value;
+                if (string.IsNullOrWhiteSpace(realmAccess))
+                    return Task.CompletedTask;
+
+                using var document = JsonDocument.Parse(realmAccess);
+                if (!document.RootElement.TryGetProperty("roles", out var roles))
+                    return Task.CompletedTask;
+
+                foreach (var role in roles.EnumerateArray())
+                {
+                    var value = role.GetString();
+                    if (!string.IsNullOrWhiteSpace(value))
+                        identity.AddClaim(new Claim(ClaimTypes.Role, value));
+                }
+
+                return Task.CompletedTask;
+            },
             OnAuthenticationFailed = context =>
             {
                 Console.WriteLine("JWT ERROR:");
@@ -43,7 +69,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("admin"));
+});
 
 // -------------------------------------------------
 // CORS — allow Angular dev server and production URL

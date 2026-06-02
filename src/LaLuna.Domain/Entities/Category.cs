@@ -27,11 +27,15 @@ public class Category : BaseEntity
         };
     }
 
-    public void Update(string name, string slug, string? imageUrl = null)
+    public void Update(string name, string slug, string? imageUrl = null, int? parentId = null)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(slug);
+
         Name = name;
         Slug = slug.ToLowerInvariant();
         ImageUrl = imageUrl;
+        ParentId = parentId;
         SetUpdatedAt();
     }
 }

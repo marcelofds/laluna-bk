@@ -10,7 +10,7 @@ namespace LaLuna.API.Controllers;
 
 [ApiController]
 [Route("api/orders")]
-[Authorize]
+//[Authorize]
 [Produces("application/json")]
 public class OrdersController(IMediator mediator) : ControllerBase
 {
